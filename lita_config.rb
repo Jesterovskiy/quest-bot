@@ -18,7 +18,8 @@ Lita.configure do |config|
   # The adapter you want to connect with. Make sure you've added the
   # appropriate gem to the Gemfile.
   config.robot.adapter = :telegram
-  config.adapters.telegram.telegram_token = ENV['TELEGRAM_TOKEN']
+  config.robot.alias = '/'
+  config.adapters.telegram.telegram_token = '257737927:AAHtMYvBYAOMxiBRDSkAm_c1D12fzINGleg'
 
   ## Example: Set options for the chosen adapter.
   # config.adapter.username = "myname"
