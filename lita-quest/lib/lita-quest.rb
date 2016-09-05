@@ -1,5 +1,4 @@
 require 'lita'
-require 'pry'
 require 'dotenv'
 Dotenv.load
 require_relative 'db/init'
