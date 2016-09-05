@@ -10,6 +10,7 @@ PATH
   remote: ./lita-quest
   specs:
     lita-quest (0.1.0)
+      dotenv (~> 2.1.1)
       lita (>= 4.7)
       pg (~> 0.18.4)
       sequel (~> 4.37.0)
