@@ -28,6 +28,7 @@ Lita.configure do |config|
   ## Example: Set options for the Redis connection.
   # config.redis.host = "127.0.0.1"
   # config.redis.port = 1234
+  config.redis[:url] = ENV['REDIS_URL']
 
   ## Example: Set configuration for any loaded handlers. See the handler's
   ## documentation for options.
