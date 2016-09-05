@@ -1,8 +1,10 @@
 source 'https://rubygems.org'
 
+ruby '2.3.1'
+
 gem 'lita'
-gem 'lita-telegram', path: '~/Projects/lita-telegram'
-gem 'lita-quest', path: './lita-quest'
+gem 'lita-telegram', github: 'Jesterovskiy/lita-telegram'
+gem 'lita-quest',    path: './lita-quest'
 
 group :development do
   gem 'pry-byebug'
