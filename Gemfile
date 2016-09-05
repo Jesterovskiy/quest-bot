@@ -8,4 +8,5 @@ gem 'lita-quest',    path: './lita-quest'
 
 group :development do
   gem 'pry-byebug'
+  gem 'dotenv'
 end

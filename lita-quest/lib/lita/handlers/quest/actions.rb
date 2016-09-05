@@ -42,7 +42,6 @@ module Lita::Handlers
     end
 
     def results(response)
-      binding.pry
       results = DB[:score_board].limit(10).order(:time).all
       results.map do |result|
         result[:time] = result[:time].strftime('%M:%S') if result[:time]

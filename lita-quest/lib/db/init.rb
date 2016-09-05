@@ -1,6 +1,6 @@
 require 'sequel'
 
-DB = Sequel.sqlite('score_board.db')
+DB = Sequel.connect(ENV['DATABASE_URL'])
 
 if DB.tables.empty?
   DB.create_table :score_board do
