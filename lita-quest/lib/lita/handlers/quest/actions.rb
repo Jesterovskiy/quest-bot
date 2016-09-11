@@ -17,7 +17,7 @@ module Lita::Handlers
       response.reply("Hello #{response.user.name}. You don't know me. But, I know you. I want to play a game.")
       response.reply("Look around #{response.user.name}. You have 5 minutes to escape room. Better hurry up.")
       sleep 2
-      start_time = Time.now.utc + 305
+      start_time = Time.now.utc + 310
       REDIS.set(response.user.name + '_start_time', start_time)
       every(60) do |timer|
         check_timer(response, timer)
@@ -220,13 +220,13 @@ module Lita::Handlers
       if time.negative?
         REDIS.set(response.user.name, 'game_over')
       else
-        rem_time = (time / 60).to_i.zero? ? time.to_s + ' seconds' : (time / 60).to_i.to_s + ' minutes'
+        rem_time = (time / 60).to_i.zero? ? time.to_s.to_i + ' seconds' : (time / 60).to_i.to_s + ' minutes'
         response.reply(rem_time + ' remaining')
       end
     end
 
     def time_left(response)
-      Time.new(REDIS.get(response.user.name + '_start_time')).utc - Time.now.utc.to_i
+      Time.parse(REDIS.get(response.user.name + '_start_time')).utc - Time.now.utc.to_i
     end
 
     before(*instance_methods - EXCLUDE_METHODS) do |response|
