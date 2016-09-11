@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/Jesterovskiy/lita-telegram.git
-  revision: 36994e7c0c084efe4b1a841a1450ad8f2e304c6a
+  revision: 1c03b7a4afd794555beba154a124047cde3a1bae
   specs:
     lita-telegram (0.1.0)
       lita (>= 4.5)
