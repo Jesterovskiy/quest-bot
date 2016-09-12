@@ -8,6 +8,7 @@ if DB.tables.empty?
     primary_key :id
     String :player
     Time :time
+    String :status
     String :additions
   end
 end

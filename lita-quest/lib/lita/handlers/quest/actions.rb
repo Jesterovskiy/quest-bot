@@ -75,15 +75,17 @@ module Lita::Handlers
 
     def yes_please(response)
       REDIS.set(response.user.name, 'game_over')
-      DB[:score_board].insert(player: response.user.name, time: time_left(response), additions: 'Wrong chair')
+      DB[:score_board].insert(player: response.user.name, time: time_left(response), status: 'lose', additions: 'Wrong chair')
       response.reply('You die in agony. My congratulations.')
     end
 
     def sit_on_right(response)
       REDIS.set(response.user.name, 'win')
-      DB[:score_board].insert(player: response.user.name, time: time_left(response), additions: 'Shame on you')
+      DB[:score_board].insert(player: response.user.name, time: time_left(response), status: 'win', additions: 'Shame on you')
       response.reply('You fell pain and shame. Door is open and you can escape, but it was worth it?')
     end
+
+    ###########################################################
 
     def go_to_left_wall(response)
       robot.chat_service.send_keyboard(
@@ -162,13 +164,13 @@ module Lita::Handlers
 
     def self_destruction(response)
       REDIS.set(response.user.name, 'game_over')
-      DB[:score_board].insert(player: response.user.name, time: time_left(response), additions: 'He did not know the German')
+      DB[:score_board].insert(player: response.user.name, time: time_left(response), status: 'lose', additions: 'He did not know the German')
       response.reply('You hear siren and countdown of self-destruction. Bye-bye.')
     end
 
     def escape(response)
       REDIS.set(response.user.name, 'win')
-      DB[:score_board].insert(player: response.user.name, time: time_left(response), additions: 'Glückwünsche!')
+      DB[:score_board].insert(player: response.user.name, time: time_left(response), status: 'win', additions: 'Glückwünsche!')
       response.reply('You run right application, that open door. You free!')
     end
 
@@ -178,9 +180,11 @@ module Lita::Handlers
 
     def android(response)
       REDIS.set(response.user.name, 'game_over')
-      DB[:score_board].insert(player: response.user.name, time: time_left(response), additions: 'Wrong phone')
+      DB[:score_board].insert(player: response.user.name, time: time_left(response), status: 'lose', additions: 'Wrong phone')
       response.reply('Wrong. You plug Samsung Galaxy Note 7, he ignited, burning the entire room. You dead.')
     end
+
+    ###########################################################
 
     def go_to_right_wall(response)
       robot.chat_service.send_keyboard(
@@ -200,15 +204,17 @@ module Lita::Handlers
 
     def zigulenki(response)
       REDIS.set(response.user.name, 'win')
-      DB[:score_board].insert(player: response.user.name, time: time_left(response), additions: 'Zigulenki')
-      response.reply('Portrait winks and makes the photo. The door opens. Freedom for a photo in social networks. Zashkvar')
+      DB[:score_board].insert(player: response.user.name, time: time_left(response), status: 'win', additions: 'Zigulenki')
+      response.reply('Bandera portrait winks and makes the photo. The door opens. Freedom for a photo in social networks. Zashkvar')
     end
+
+    ###########################################################
 
     def check_timer(response, timer)
       case REDIS.get(response.user.name)
       when 'game_over'
         timer.stop
-        DB[:score_board].insert(player: response.user.name, additions: 'Game Over')
+        DB[:score_board].insert(player: response.user.name, status: 'lose', additions: 'Game Over')
         return response.reply('You lose. Game Over. Bye.')
       when 'win'
         return timer.stop
