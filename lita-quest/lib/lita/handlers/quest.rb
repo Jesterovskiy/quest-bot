@@ -13,6 +13,7 @@ module Lita
       route(/^sit_on_left/, :sit_on_left, command: true)
       route(/^yes_please/, :yes_please, command: true)
       route(/^sit_on_right/, :sit_on_right, command: true)
+      route(/^use_saw/, :use_saw, command: true)
 
       route(/^go_to_left_wall/, :go_to_left_wall, command: true)
       route(/^iphone/, :iphone, command: true)
