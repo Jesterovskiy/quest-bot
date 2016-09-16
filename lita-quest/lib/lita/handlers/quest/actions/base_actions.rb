@@ -35,7 +35,8 @@ module Lita::Handlers
       def results(response)
         results = DB[:score_board].where(status: 'win').limit(10).order(:time).reverse.all
         results.map do |result|
-          result[:time] = Time.at(300.0 - result[:time].to_i).utc.strftime("%M:%S") if result[:time]
+          seconds = result[:time].min * 60 + result[:time].sec
+          result[:time] = Time.at(310 - seconds).utc.strftime("%M:%S") if result[:time]
           result.delete(:id).to_s
         end
         response.reply("```text #{results.join("\n")} ```")
