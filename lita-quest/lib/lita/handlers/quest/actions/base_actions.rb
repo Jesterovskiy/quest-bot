@@ -34,9 +34,15 @@ module Lita::Handlers
 
       def results(response)
         results = DB[:score_board].where(status: 'win').limit(10).order(:time).reverse.all
+        if results.empty?
+          response.reply('Nobody escape. See 10 latest losers:')
+          results = DB[:score_board].limit(10).order(:time).reverse.all
+        end
         results.map do |result|
-          seconds = result[:time].min * 60 + result[:time].sec
-          result[:time] = Time.at(310 - seconds).utc.strftime("%M:%S") if result[:time]
+          if result[:time]
+            seconds = result[:time].min * 60 + result[:time].sec
+            result[:time] = Time.at(310 - seconds).utc.strftime("%M:%S")
+          end
           result.delete(:id).to_s
         end
         response.reply("```text #{results.join("\n")} ```")
