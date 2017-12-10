@@ -1,6 +1,6 @@
 require 'sequel'
 
-REDIS = Redis.connect
+REDIS = Redis.new
 DB = Sequel.connect(ENV['DATABASE_URL'])
 
 if DB.tables.empty?

@@ -1,6 +1,6 @@
 Lita.configure do |config|
   # The name your robot will use.
-  config.robot.name = 'QuestBot'
+  config.robot.name = 'Santa Doesn`t Exist'
 
   # The locale code for the language to use.
   # config.robot.locale = :en
@@ -19,7 +19,7 @@ Lita.configure do |config|
   # appropriate gem to the Gemfile.
   config.robot.adapter = :telegram
   config.robot.alias = '/'
-  config.adapters.telegram.telegram_token = '257737927:AAHtMYvBYAOMxiBRDSkAm_c1D12fzINGleg'
+  config.adapters.telegram.telegram_token = '485624288:AAEEPf_vqwpAq1hkDhjGRQSdP986WvuBrek'
 
   ## Example: Set options for the chosen adapter.
   # config.adapter.username = "myname"
