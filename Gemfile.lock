@@ -69,7 +69,7 @@ GEM
     redis-namespace (1.6.0)
       redis (>= 3.0.4)
     sequel (4.37.0)
-    telegram-bot-ruby (0.8.6)
+    telegram-bot-ruby (0.8.6.1)
       faraday
       inflecto
       virtus
