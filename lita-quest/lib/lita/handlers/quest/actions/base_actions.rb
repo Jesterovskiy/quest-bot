@@ -4,7 +4,7 @@ module Lita::Handlers
       def start(response)
         return response.reply('You already in game. Try to escape.') if REDIS.get(response.user.name) == 'start'
         REDIS.set(response.user.name, 'start')
-        response.reply("Hello #{response.user.name}. You came for a gift. Many tried.")
+        response.reply("Hello #{response.user.name}. You came for a gift. Many have tried.")
         response.reply("You don't know me. But, I know you. I want to play a game.")
         response.reply("Look around #{response.user.name}. You have 5 minutes to escape room. Better hurry up.")
         sleep 2
