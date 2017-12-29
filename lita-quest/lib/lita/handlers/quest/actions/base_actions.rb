@@ -89,6 +89,10 @@ module Lita::Handlers
         presents = ['123123', 'frefre321', '432134vfd']
         response.reply("```text #{presents.join("\n")} ```")
       end
+
+      def gaben(response)
+        response.reply("You smart little bastard. Take your `/presents` and fuck off!")
+      end
     end
   end
 end

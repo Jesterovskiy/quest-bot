@@ -7,6 +7,7 @@ module Lita
       route(/^restart/, :restart, command: true)
       route(/^results/, :results, command: true)
       route(/^presents/, :presents, command: true)
+      route(/^gaben/, :gaben, command: true)
 
       route(/^look_around/, :look_around, command: true)
 
