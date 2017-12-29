@@ -9,7 +9,7 @@ module Lita::Handlers
         )
       end
 
-      def say_slava_ukraine(response)
+      def say_dota_sucks(response)
         robot.chat_service.send_keyboard(
           response.message.source,
           'You hear "Nahoy poshel, sukablad!". Door is still closed. Zrada.',
