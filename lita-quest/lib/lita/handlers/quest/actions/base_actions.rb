@@ -4,7 +4,8 @@ module Lita::Handlers
       def start(response)
         return response.reply('You already in game. Try to escape.') if REDIS.get(response.user.name) == 'start'
         REDIS.set(response.user.name, 'start')
-        response.reply("Hello #{response.user.name}. You don't know me. But, I know you. I want to play a game.")
+        response.reply("Hello #{response.user.name}. You came for a gift. Many tried.")
+        response.reply("You don't know me. But, I know you. I want to play a game.")
         response.reply("Look around #{response.user.name}. You have 5 minutes to escape room. Better hurry up.")
         sleep 2
         start_time = Time.now.utc + 310
@@ -27,8 +28,8 @@ module Lita::Handlers
       def finish(response)
         REDIS.set(response.user.name, 'win')
         robot.chat_service.send_keyboard(
-          response.message.source, 'You win. Check results',
-          ['/results']
+          response.message.source, 'You win. Get your presents',
+          ['/presents']
         )
       end
 
@@ -51,7 +52,7 @@ module Lita::Handlers
       def look_around(response)
         robot.chat_service.send_keyboard(
           response.message.source,
-          'You see small room with door and without windows. Room full of Nazi symbols.
+          'You see small room with door and without windows. Room full of game posters and hats.
           In the center, you see two chairs. On the right wall you see portrait. Near the left wall - table.',
           ['/go_to_chairs', '/go_to_left_wall', '/go_to_right_wall']
         )
@@ -62,7 +63,7 @@ module Lita::Handlers
         when 'game_over'
           timer.stop
           DB[:score_board].insert(player: response.user.name, status: 'lose', additions: 'Game Over')
-          return response.reply('You lose. Game Over. Bye.')
+          return response.reply('You lose. Game Over. Get your `/presents`. Bye.')
         when 'win'
           return timer.stop
         when 'restart'
@@ -82,6 +83,11 @@ module Lita::Handlers
 
       def time_left(response)
         Time.parse(REDIS.get(response.user.name + '_start_time')).utc - Time.now.utc.to_i
+      end
+
+      def presents(response)
+        presents = ['123123', 'frefre321', '432134vfd']
+        response.reply("```text #{presents.join("\n")} ```")
       end
     end
   end

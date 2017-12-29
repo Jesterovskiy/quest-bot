@@ -24,8 +24,8 @@ module Lita::Handlers
         DB[:score_board].insert(player: response.user.name, time: time_left(response), status: 'lose', additions: 'Wrong chair')
         robot.chat_service.send_keyboard(
           response.message.source,
-          'You die in agony. My congratulations.',
-          ['/results']
+          'You die in agony. My congratulations. Take your presents.',
+          ['/presents']
         )
       end
 
@@ -34,8 +34,8 @@ module Lita::Handlers
         DB[:score_board].insert(player: response.user.name, time: time_left(response), status: 'win', additions: 'Shame on you')
         robot.chat_service.send_keyboard(
           response.message.source,
-          'You fell pain and shame. Door is open and you can escape, but it was worth it?',
-          ['/results']
+          'You fell pain and shame. Door is open and you can escape, but it was worth it? Take your presents and get out of here, pervert.',
+          ['/presents']
         )
       end
 
@@ -44,8 +44,8 @@ module Lita::Handlers
         DB[:score_board].insert(player: response.user.name, time: time_left(response), status: 'win', additions: 'Smart guy')
         robot.chat_service.send_keyboard(
           response.message.source,
-          'You cut down horny dildos and sit on the chair. Door opens. You free!',
-          ['/results']
+          'You cut down horny dildos and sit on the chair. Door opens. You free! You get your presents!',
+          ['/presents']
         )
       end
     end

@@ -4,16 +4,16 @@ module Lita::Handlers
       def go_to_right_wall(response)
         robot.chat_service.send_keyboard(
           response.message.source,
-          'You see Bandera portrait. He smiling and you see sun over the right shoulder',
-          ['/say_slava_ukraine', '/try_open_portrait', '/look_around']
+          'You see portrait of very familiar guy. With beard. He smiling and you see sun over the right shoulder',
+          ['/say_dota_sucks', '/try_open_portrait', '/look_around']
         )
       end
 
       def say_slava_ukraine(response)
         robot.chat_service.send_keyboard(
           response.message.source,
-          'You hear "Heroyam Slava!" and anthem from speakers. Door is still closed. Zrada.',
-          ['/say_slava_ukraine', '/try_open_portrait', '/look_around']
+          'You hear "Nahoy poshel, sukablad!". Door is still closed. Zrada.',
+          ['/try_open_portrait', '/look_around']
         )
       end
 
@@ -31,8 +31,8 @@ module Lita::Handlers
         DB[:score_board].insert(player: response.user.name, time: time_left(response), status: 'win', additions: 'Zigulenki')
         robot.chat_service.send_keyboard(
           response.message.source,
-          'Bandera portrait winks and makes the photo. The door opens. Freedom, for a photo in social networks. Zashkvar',
-          ['/results']
+          'Portrait winks and makes the photo. The door opens. Freedom, for a photo in social networks. Zashkvar and presents',
+          ['/presents']
         )
       end
     end

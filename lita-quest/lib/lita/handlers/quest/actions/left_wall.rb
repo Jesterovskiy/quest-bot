@@ -81,8 +81,8 @@ module Lita::Handlers
         DB[:score_board].insert(player: response.user.name, time: time_left(response), status: 'lose', additions: 'He did not know the German')
         robot.chat_service.send_keyboard(
           response.message.source,
-          'You hear siren and countdown of self-destruction. Bye-bye.',
-          ['/results']
+          'You hear siren and countdown of self-destruction. Bye-bye. And dont forget your presents',
+          ['/presents']
         )
       end
 
@@ -92,8 +92,8 @@ module Lita::Handlers
         response.reply()
         robot.chat_service.send_keyboard(
           response.message.source,
-          'You run right application, that open door. You free!',
-          ['/results']
+          'You run right application, that open door. You free! You win some presents',
+          ['/presents']
         )
       end
 
@@ -110,8 +110,8 @@ module Lita::Handlers
         DB[:score_board].insert(player: response.user.name, time: time_left(response), status: 'lose', additions: 'Wrong phone')
         robot.chat_service.send_keyboard(
           response.message.source,
-          'Wrong. You plug Samsung Galaxy Note 7, he ignited, burning the entire room. You dead.',
-          ['/results']
+          'Wrong. You plug Samsung Galaxy Note 7, he ignited, burning the entire room. You dead. Samsung company wery sorry and give you some presents',
+          ['/presents']
         )
       end
     end
