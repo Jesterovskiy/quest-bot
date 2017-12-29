@@ -31,7 +31,7 @@ module Lita
       route(/^try_another_app/, :pin_1488, command: true)
 
       route(/^go_to_right_wall/, :go_to_right_wall, command: true)
-      route(/^say_slava_ukraine/, :say_slava_ukraine, command: true)
+      route(/^say_dota_sucks/, :say_slava_ukraine, command: true)
       route(/^try_open_portrait/, :try_open_portrait, command: true)
       route(/^o\//, :zigulenki, command: true)
       route(/^sieg_heil/, :zigulenki, command: true)
