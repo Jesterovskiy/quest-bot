@@ -87,8 +87,8 @@ module Lita::Handlers
 
       def presents(response)
         presents = ['123123', '321321', '14881488', 'gAbEnPiDoR!11']
-        response.reply("```text #{presents.join("\n")} ```")
-        response.reply("Something went wrong. Please be patience and wait for solving problem. We notify you on email")
+        response.reply("```text#{presents.join("\n")} ```")
+        response.reply("Something went wrong. Please be patience and wait for solving problem. We notify you on email.")
       end
 
       def gaben(response)
